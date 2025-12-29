@@ -25,6 +25,7 @@ $label_all_accounts = "Tutti gli utenti";
 $label_add_account = "Aggiungi utente";
 $label_all_roles = "Tutti i ruoli";
 $label_damares = "Damares" ;
+$label_dat_caffe = "Dat Caffè" ;
 
 //////  COMMON  //////
 
