@@ -1,0 +1,15 @@
+.card .card-header.manual{
+    padding-bottom: 0;
+}
+
+.sidebar-wrapper .menu{
+    padding: 1rem 0.8rem;
+}
+
+#main.home{
+    margin-left:0;
+}
+
+.card-content.home{
+    font-size:1.5em;
+}
