@@ -11,8 +11,6 @@
 
 
 require __DIR__ . "/coreConfig.php";
-require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../Database.php';
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
@@ -35,6 +33,33 @@ $meseInizio  = $_POST['mese_inizio'];
 $meseFine    = $_POST['mese_fine'];
 $attivita    = $_POST['attivita'];
 
+/*
+- prendo il nome dell'attività
+- compongo il nome della tabella listino
+- recupero i dati della tabella listino e li metto in un array di array
+- mentre ciclo i dati del file excel calcolo in tempo reale i totali 
+- nel frontend devo aprire una finestra con la tabella di dettaglio e il relativo risultato
+*/
+
+$dat->table = "dat_listino_$attivita";
+$products = $dat->showAll('id');
+$listino = [];
+while ($row = $products->fetch(PDO::FETCH_ASSOC)) {
+    extract($row);
+    $listino[] = array($row);
+}
+
+for($idx=0;$idx<count($listino);$idx++){
+    print_r($listino[$idx][0]['categoria']);
+    echo ' - ';
+    print_r($listino[$idx][0]['fascia']);
+    echo ' - ';
+    print_r($listino[$idx][0]['tabella']);
+    echo '<br>';
+}
+
+exit;
+
 /* ===============================
    NOME TABELLA
    dat_yyyy_mm_mm
@@ -47,12 +72,6 @@ $tableName = sprintf(
     $meseFine
 );
 
-/* ===============================
-   CONNESSIONE DB
-================================ */
-
-$database = new Database();
-$db = $database->getConnection();
 
 /* ===============================
    CREAZIONE TABELLA
@@ -128,7 +147,6 @@ try {
 
     $db->commit();
     echo "Importazione completata. Tabella creata: <b>$tableName</b>";
-
 } catch (Exception $e) {
     $db->rollBack();
     die("Errore importazione: " . $e->getMessage());
