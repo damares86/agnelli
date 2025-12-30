@@ -2,7 +2,8 @@
     "require": {
         "bdk/debug": "3.0",
         "pelago/emogrifier": "^7.0.1",
-        "phpmailer/phpmailer": "^6.10"
+        "phpmailer/phpmailer": "^6.10",
+        "phpoffice/phpspreadsheet": "^1.30"
     },
   "config": {
     "platform": {

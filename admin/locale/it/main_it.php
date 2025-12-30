@@ -26,6 +26,8 @@ $label_add_account = "Aggiungi utente";
 $label_all_roles = "Tutti i ruoli";
 $label_damares = "Damares" ;
 $label_dat_caffe = "Dat Caffè" ;
+$label_add_invoice = "Aggiungi fattura" ;
+$label_all_invoices = "Tutte le fatture" ;
 
 //////  COMMON  //////
 
