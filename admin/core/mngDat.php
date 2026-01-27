@@ -96,7 +96,7 @@ $anno        = (int) $_POST['anno'];
 $meseInizio  = $_POST['mese_inizio'];
 $meseFine    = $_POST['mese_fine'];
 
-$tableName = "{$anno}_{$meseInizio}_{$meseFine}";
+$tableName = "{$anno}_{$meseInizio}_{$meseFine}_{$attivita}";
 
 $sqlCreate = "
 CREATE TABLE IF NOT EXISTS `$tableName` (
@@ -146,31 +146,40 @@ VALUES
 $stmt = $db->prepare($sqlInsert);
 $errors = 0;
 
-// inserisco il totale dei caffè dei salesiani
-$caffeSalesiani    = $_POST['salesiani'];
+if ($attivita == "scuola") {
 
-$prezzoCaffeSalesiani = $listinoMap['SALESIANI|1|1']['prezzo_dat'];
+    // inserisco il totale dei caffè dei salesiani
+    $caffeSalesiani    = $_POST['salesiani'];
 
-$salesiani = [
-    'categoria'        => 'SALESIANI',
-    'tabella'          => 1,
-    'fascia'           => 1,
-    'quantita'         => $caffeSalesiani,
-    'prezzo_pubblico'  => $listinoMap['SALESIANI|1|1']['prezzo_pubblico'],
-    'prezzo_dat'       => $listinoMap['SALESIANI|1|1']['prezzo_dat'],
-];
+    $prezzoCaffeSalesiani = $listinoMap['SALESIANI|1|1']['prezzo_dat'];
 
-if (!$stmt->execute($salesiani)) {
-    $errors++;
-}
+    $salesiani = [
+        'categoria'        => 'SALESIANI',
+        'tabella'          => 1,
+        'fascia'           => 1,
+        'quantita'         => $caffeSalesiani,
+        'prezzo_pubblico'  => $listinoMap['SALESIANI|1|1']['prezzo_pubblico'],
+        'prezzo_dat'       => $listinoMap['SALESIANI|1|1']['prezzo_dat'],
+    ];
 
-// inserisco tutti i dati del file excel su db
-foreach ($datiDaInserire as $riga) {
-    if ($riga['categoria'] == 'SALESIANI') {
-        continue;
-    }
-    if (!$stmt->execute($riga)) {
+    if (!$stmt->execute($salesiani)) {
         $errors++;
+    }
+
+    // inserisco tutti i dati del file excel su db
+    foreach ($datiDaInserire as $riga) {
+        if ($riga['categoria'] == 'SALESIANI') {
+            continue;
+        }
+        if (!$stmt->execute($riga)) {
+            $errors++;
+        }
+    }
+} else {
+    foreach ($datiDaInserire as $riga) {
+        if (!$stmt->execute($riga)) {
+            $errors++;
+        }
     }
 }
 

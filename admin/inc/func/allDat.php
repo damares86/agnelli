@@ -13,7 +13,7 @@ $tables = $stmt->fetchAll(PDO::FETCH_COLUMN);
 $datTables = [];
 
 foreach ($tables as $table) {
-  if (preg_match('/^\d{4}_\d{2}_\d{2}$/', $table)) {
+  if (preg_match('/^\d{4}_\d{2}_\d{2}_.+$/', $table)) {
     $datTables[] = $table;
   }
 }
@@ -76,6 +76,7 @@ $mesi = [
           <thead>
             <tr>
               <th>Periodo</th>
+              <th>Attività</th>
               <th>Importo da fatturare</th>
               <th>Importo ivato</th>
               <th><?= $common_actions ?></th>
@@ -87,7 +88,18 @@ $mesi = [
             foreach ($risultati as $table => $righe) {
 
               // split nome tabella
-              [$anno, $meseInizio, $meseFine] = explode('_', $table);
+            [$anno, $meseInizio, $meseFine,$attivita] = explode('_', $table);
+
+/*               $parts = explode('_', $table);
+
+              // primi 3 elementi fissi
+              $anno       = $parts[0];
+              $meseInizio = $parts[1];
+              $meseFine   = $parts[2];
+
+              // tutto il resto è l'attività (anche se un domani avrà underscore)
+              $attivita = implode('_', array_slice($parts, 3)); */
+              $attivita = ucfirst($attivita);
 
               $nomeMeseInizio = $mesi[$meseInizio] ?? 'Mese sconosciuto';
               $nomeMeseFine   = $mesi[$meseFine]   ?? 'Mese sconosciuto';
@@ -127,6 +139,7 @@ $mesi = [
             ?>
               <tr>
                 <td><?= $nomeMeseInizio ?> - <?= $nomeMeseFine ?> <?= $anno ?></td>
+                <td><?= $attivita ?></td>
                 <td>
                   <?= number_format($totaleNetto, 2, ',', '.') ?> €
                 </td>
