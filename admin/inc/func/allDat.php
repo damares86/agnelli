@@ -211,7 +211,11 @@ $mesi = [
                                     <td><?= number_format($totaleNettoRiga, 2, ',', '.') ?></td>
                                     <td><?= number_format($totaleIvatoRiga, 2, ',', '.') ?></td>
                                   </tr>
-                                <?php } ?>
+                                <?php 
+                                } 
+                                  $subTotaleNetto = $subTotaleNetto - $caffeSalesiani;
+                                  $subTotaleIvato = $subTotaleIvato - ($caffeSalesiani*1.22);
+                                ?>
                               </tbody>
                               <tfoot>
                                 <tr class="fw-bold">
