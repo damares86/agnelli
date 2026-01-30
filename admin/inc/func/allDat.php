@@ -23,7 +23,7 @@ $risultati = [];
 
 foreach ($datTables as $table) {
 
-  $sql = "SELECT * FROM `$table` ORDER BY categoria, tabella, fascia";
+  $sql = "SELECT * FROM `$table` ORDER BY ordine";
   $stmt = $db->query($sql);
 
   $risultati[$table] = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -175,7 +175,9 @@ $mesi = [
                                   <th>Fascia</th>
                                   <th>Quantità</th>
                                   <th>Prezzo DAT</th>
-                                  <th>Prezzo Pubblico</th>
+                                  <th>Totale DAT</th>
+                                  <th>Prezzo Lordo</th>
+                                  <th>Prezzo Netto</th>
                                   <th>Totale Netto</th>
                                   <th>Totale Ivato</th>
                                 </tr>
@@ -207,7 +209,9 @@ $mesi = [
                                     <td><?= $riga['fascia'] ?></td>
                                     <td><?= $riga['quantita'] ?></td>
                                     <td><?= number_format($riga['prezzo_dat'], 2, ',', '.') ?></td>
-                                    <td><?= number_format($riga['prezzo_pubblico'], 2, ',', '.') ?></td>
+                                    <td><?= $riga['totale_dat'] ?></td>
+                                    <td><?= number_format($riga['prezzo_lordo_agnelli'], 2, ',', '.') ?></td>
+                                    <td><?= number_format($riga['prezzo_netto_agnelli'], 2, ',', '.') ?></td>
                                     <td><?= number_format($totaleNettoRiga, 2, ',', '.') ?></td>
                                     <td><?= number_format($totaleIvatoRiga, 2, ',', '.') ?></td>
                                   </tr>

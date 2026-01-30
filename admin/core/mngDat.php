@@ -56,7 +56,7 @@ $rows = $sheet->toArray(null, true, true, true);
 // ciclo i dati del file excel
 
 $datiDaInserire = [];
-
+$ordine = 1;
 foreach ($rows as $index => $row) {
 
     // salta intestazione
@@ -82,6 +82,7 @@ foreach ($rows as $index => $row) {
     }
 
     $datiDaInserire[] = [
+        'ordine'           => $ordine++,
         'categoria'        => $categoria,
         'tabella'          => $tabella,
         'fascia'           => $fascia,
@@ -102,7 +103,7 @@ $sqlCreate = "
 CREATE TABLE IF NOT EXISTS `$tableName` (
 
     id INT AUTO_INCREMENT PRIMARY KEY,
-
+    ordine INT NOT NULL,
     categoria VARCHAR(255) NOT NULL,
     tabella INT NOT NULL,
     fascia INT NOT NULL,
@@ -138,9 +139,9 @@ $db->exec($sqlCreate);
 
 $sqlInsert = "
 INSERT INTO `$tableName`
-(categoria, tabella, fascia, quantita, prezzo_dat, prezzo_pubblico)
+(ordine, categoria, tabella, fascia, quantita, prezzo_dat, prezzo_pubblico)
 VALUES
-(:categoria, :tabella, :fascia, :quantita, :prezzo_dat, :prezzo_pubblico)
+(:ordine, :categoria, :tabella, :fascia, :quantita, :prezzo_dat, :prezzo_pubblico)
 ";
 
 $stmt = $db->prepare($sqlInsert);
@@ -154,6 +155,7 @@ if ($attivita == "scuola") {
     $prezzoCaffeSalesiani = $listinoMap['SALESIANI|1|1']['prezzo_dat'];
 
     $salesiani = [
+        'ordine' => 0,
         'categoria'        => 'SALESIANI',
         'tabella'          => 1,
         'fascia'           => 1,
