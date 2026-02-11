@@ -4,7 +4,6 @@ require '../vendor/autoload.php';
 // check if the user is logged in
 require __DIR__."/coreConfig.php";
 
-
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 

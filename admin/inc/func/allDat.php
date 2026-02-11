@@ -85,7 +85,7 @@ function calcolaFattura(array $righe): array
     <div class="card-body">
       <h4 class="card-title">Fatture</h4>
 
-      <table class="table">
+      <table class="table" id="table">
         <thead>
           <tr>
             <th>Periodo</th>
@@ -202,7 +202,7 @@ function calcolaFattura(array $righe): array
 
       <div class="modal-footer">
         <a href="core/export_fattura.php?table=' . urlencode($table) . '"
-           class="btn btn-success">Esporta XLSX</a>
+           class="btn btn-success" target="_blank">Esporta XLSX</a>
         <button class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
       </div>
 
