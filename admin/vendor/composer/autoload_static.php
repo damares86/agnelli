@@ -37,7 +37,6 @@ class ComposerStaticInit98e480f004e9a0ee14fc16da044fc38c
         array (
             'Psr\\SimpleCache\\' => 16,
             'Psr\\Http\\Message\\' => 17,
-            'Psr\\Http\\Client\\' => 16,
             'PhpOffice\\PhpSpreadsheet\\' => 25,
             'Pelago\\Emogrifier\\' => 18,
             'PHPMailer\\PHPMailer\\' => 20,
@@ -106,11 +105,6 @@ class ComposerStaticInit98e480f004e9a0ee14fc16da044fc38c
         'Psr\\Http\\Message\\' =>
         array (
             0 => __DIR__ . '/..' . '/bdk/debug/src/Psr7',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
-        ),
-        'Psr\\Http\\Client\\' =>
-        array (
-            0 => __DIR__ . '/..' . '/psr/http-client/src',
         ),
         'PhpOffice\\PhpSpreadsheet\\' =>
         array (
