@@ -60,17 +60,20 @@ function calcolaFattura(array $righe): array
       * $riga['quantita'];
 
     if ($riga['categoria'] === 'SALESIANI') {
-      $caffeSalesiani += $nettoRiga;
+      $caffeSalesiani += $nettoRiga * 1.10;
       continue;
     }
 
     $totaleNetto += $nettoRiga;
     $totaleIvato += $nettoRiga * 1.22;
   }
+  
+  $totaleNettoFinale = $totaleNetto - $caffeSalesiani;
+  $totaleIvatoFinale = $totaleIvato - ($caffeSalesiani * 1.22);
 
   return [
-    'netto'     => round($totaleNetto, 2),
-    'ivato'     => round($totaleIvato, 2),
+    'netto'     => round($totaleNettoFinale, 2),
+    'ivato'     => round($totaleIvatoFinale, 2),
     'salesiani' => round($caffeSalesiani, 2),
   ];
 }

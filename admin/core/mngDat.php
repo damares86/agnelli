@@ -166,13 +166,15 @@ if ($attivita == "scuola") {
 
     if (!$stmt->execute($salesiani)) {
         $errors++;
+        echo "sdtop";
+        exit;
     }
 
     // inserisco tutti i dati del file excel su db
     foreach ($datiDaInserire as $riga) {
-        if ($riga['categoria'] == 'SALESIANI') {
+/*         if ($riga['categoria'] == 'SALESIANI') {
             continue;
-        }
+        } */
         if (!$stmt->execute($riga)) {
             $errors++;
         }
