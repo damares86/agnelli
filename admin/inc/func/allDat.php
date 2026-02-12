@@ -191,11 +191,11 @@ function calcolaFattura(array $righe): array
             </tbody>
             <tfoot>
               <tr class="fw-bold">
-                <td colspan="6" class="text-end">Totale netto</td>
+                <td colspan="6" class="text-end">Importo totale da fatturare</td>
                 <td colspan="2">' . number_format($fattura['netto'], 2, ',', '.') . ' €</td>
               </tr>
               <tr class="fw-bold">
-                <td colspan="6" class="text-end">Totale ivato</td>
+                <td colspan="6" class="text-end">Importo totale ivato</td>
                 <td colspan="2">' . number_format($fattura['ivato'], 2, ',', '.') . ' €</td>
               </tr>
             </tfoot>

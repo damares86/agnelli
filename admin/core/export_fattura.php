@@ -83,11 +83,11 @@ foreach ($righe as $riga) {
 
 // totali
 $row += 1;
-$sheet->setCellValue("F$row", "Totale netto");
+$sheet->setCellValue("F$row", "Importo totale da fatturare");
 $sheet->setCellValue("G$row", $fattura['netto']);
 
 $row++;
-$sheet->setCellValue("F$row", "Totale ivato");
+$sheet->setCellValue("F$row", "Importo totale ivato");
 $sheet->setCellValue("G$row", $fattura['ivato']);
 
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
