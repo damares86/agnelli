@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `$tableName` (
     quantita INT NOT NULL,
 
     prezzo_dat DECIMAL(10,2) NOT NULL,
-    prezzo_pubblico DECIMAL(10,2) NOT NULL,
+    prezzo_pubblico DECIMAL(10,3) NOT NULL,
 
     -- prezzo_dat * quantita
     totale_dat DECIMAL(12,2)
@@ -152,15 +152,15 @@ if ($attivita == "scuola") {
     // inserisco il totale dei caffè dei salesiani
     $caffeSalesiani    = $_POST['salesiani'];
 
-    $prezzoCaffeSalesiani = $listinoMap['SALESIANI|1|1']['prezzo_dat'];
-
+    $prezzoCaffeSalesiani = ($listinoMap['SALESIANI|1|1']['prezzo_pubblico'])*1.10;
+ 
     $salesiani = [
         'ordine' => 0,
         'categoria'        => 'SALESIANI',
         'tabella'          => 1,
         'fascia'           => 1,
         'quantita'         => $caffeSalesiani,
-        'prezzo_pubblico'  => $listinoMap['SALESIANI|1|1']['prezzo_pubblico'],
+        'prezzo_pubblico'  => $prezzoCaffeSalesiani,
         'prezzo_dat'       => $listinoMap['SALESIANI|1|1']['prezzo_dat'],
     ];
 

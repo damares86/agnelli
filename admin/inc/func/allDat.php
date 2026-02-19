@@ -46,7 +46,7 @@ $mesi = [
 /* ===============================
    FUNZIONE CALCOLO FATTURA
 ================================ */
-function calcolaFattura(array $righe): array
+/* function calcolaFattura(array $righe): array
 {
   $totaleNetto = 0;
   $totaleIvato = 0;
@@ -76,7 +76,41 @@ function calcolaFattura(array $righe): array
     'ivato'     => round($totaleIvatoFinale, 2),
     'salesiani' => round($caffeSalesiani, 2),
   ];
+} */
+
+  function calcolaFattura(array $righe): array
+{
+  $totaleNetto = 0;
+  $totaleIvato = 0;
+  $caffeSalesiani = 0;
+
+  foreach ($righe as $riga) {
+
+    $nettoRiga =
+      ($riga['prezzo_pubblico'] - $riga['prezzo_dat'])
+      / 1.10
+      * $riga['quantita'];
+
+    $nettoRiga = round($nettoRiga, 2); // 🔥 arrotondo qui
+
+    if ($riga['categoria'] === 'SALESIANI') {
+      $caffeSalesiani += $nettoRiga;
+      continue;
+    }
+
+    $totaleNetto += $nettoRiga;
+    $totaleIvato += round($nettoRiga * 1.22, 2);
+  }
+  
+  $totaleNetto = $totaleNetto - $caffeSalesiani ;
+
+  return [
+    'netto'     => round($totaleNetto, 2),
+    'ivato'     => round($totaleIvato, 2),
+    'salesiani' => round($caffeSalesiani, 2),
+  ];
 }
+
 ?>
 
 <div class="page-title">
