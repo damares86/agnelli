@@ -31,6 +31,7 @@ function calcolaFattura(array $righe): array
   }
   
   $totaleNetto = $totaleNetto - $caffeSalesiani ;
+  $totaleIvato = $totaleIvato - ($caffeSalesiani*1.22) ;
 
   return [
     'netto'     => round($totaleNetto, 2),
