@@ -14,18 +14,19 @@ require __DIR__ . "/coreConfig.php";
 
 // check if there's a category to delete
 
+$registry->table = "registry_entry";
+
 if (filter_input(INPUT_GET, "idToDel")) {
 
     $idToDel = filter_input(INPUT_GET, "idToDel");
-    $registry->table = "accounts";
 
     $registry->id = filter_input(INPUT_GET, "idToDel");
 
     if ($registry->delete('id')) {
-        header("Location: ../index.php?p=allRegistryCat&msg=registryCatDel");
+        header("Location: ../index.php?p=allRegistry&msg=registryDel");
         exit;
     } else {
-        header("Location: ../index.php?p=allRegistryCat&err=registryCatNoDel");
+        header("Location: ../index.php?p=allRegistry&err=registryNoDel");
         exit;
     }
 }
@@ -49,10 +50,10 @@ if (filter_input(INPUT_POST, "idToMod")) {
     filter_input(INPUT_POST, "notes") ?? $items .= ", 'notes'";
 
     if ($registry->update([$items],$id)) {
-        header("Location: ../index.php?p=allRegistryCat&msg=registryCatEditSucc");
+        header("Location: ../index.php?p=allRegistry&msg=registryCatEditSucc");
         exit;
     } else {
-        header("Location: ../index.php?p=allRegistryCat&err=registryCatEditFail");
+        header("Location: ../index.php?p=allRegistry&err=registryCatEditFail");
         exit;
     }
 
@@ -70,14 +71,14 @@ if (filter_input(INPUT_POST, "idToMod")) {
     filter_input(INPUT_POST, "notes") ?? $items .= ", 'notes'";
 
     if ($registry->insert([$items])) {
-        header("Location: ../index.php?p=allRegistryCat&msg=registryCatSucc");
+        header("Location: ../index.php?p=allRegistry&msg=registrySucc");
         exit;
     } else {
-        header("Location: ../index.php?p=allRegistryCat&err=registryCatFail");
+        header("Location: ../index.php?p=allRegistry&err=registryFail");
         exit;
     }
 
 } else {
-    header("Location: ../index.php?p=allRegistryCat&err=noPost");
+    header("Location: ../index.php?p=allRegistry&err=noPost");
     exit;
 }

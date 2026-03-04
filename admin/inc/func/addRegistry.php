@@ -62,7 +62,7 @@
                                         <label>Indirizzo </label>
                                     </div>
                                     <div class="col-md-9">
-                                        <textarea class="tiny" name="address"></textarea>
+                                        <textarea name="address"></textarea>
                                     </div>
 
                                     <div class="col-md-3">
@@ -101,10 +101,10 @@
                                         <textarea class="tiny" name="address"></textarea>
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mb-3">
                                         <label>Categoria <span class="text-danger">*</span></label>
                                     </div>
-                                    <div class="col-md-9">
+                                    <div class="col-md-9 mb-3">
                                         <div class="form-group">
                                             <div class="form-check mandatory">
                                                 <div class="position-relative">
@@ -112,15 +112,14 @@
                                                         <select class="form-select" id="role" name="role">
                                                             <option value=""></option>
                                                             <?php
-                                                            $stmt = $role->showAll('id');
+                                                            $registry->table = "registry_category" ;
+                                                            $stmt = $registry->showAll('id');
                                                             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                                                if ($row['id'] > 1) {
                                                             ?>
 
-                                                                    <option value="<?= $row['id'] ?>"><?= $row['rolename'] ?></option>
+                                                                    <option value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
 
                                                             <?php
-                                                                }
                                                             }
                                                             ?>
                                                         </select>
