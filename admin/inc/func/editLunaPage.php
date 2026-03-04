@@ -74,7 +74,7 @@ extract($row);
                                     </div>
                                     <div class="col-12 pb-3 mt-2">
 
-                                        <textarea id="summernote" name="content"><?= $row['content'] ?></textarea>
+                                        <textarea class="tiny" name="content"><?= $row['content'] ?></textarea>
 
                                     </div>
 

@@ -28,6 +28,10 @@ $label_damares = "Damares" ;
 $label_dat_caffe = "Dat Caffè" ;
 $label_add_invoice = "Aggiungi fattura" ;
 $label_all_invoices = "Tutte le fatture" ;
+$label_registry = "Rubrica" ;
+$label_all_contacts = "Tutti i contatti" ;
+$label_contacts_categories = "Categorie contatti" ;
+
 
 //////  COMMON  //////
 

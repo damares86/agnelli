@@ -89,7 +89,7 @@ if(is_array($last_row)){
                                     </div>
                                     <div class="col-12 pb-3 mt-2">
 
-                                        <textarea id="summernote" name="content"></textarea>
+                                        <textarea class="tiny" name="content"></textarea>
 
                                     </div>
 
