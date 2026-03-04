@@ -35,6 +35,8 @@ $operation = filter_input(INPUT_POST, "operation");
 
 // check if there's an account to edit or add
 
+///////// SISTEMA TUTTO CON IL SOLITO SISTEMA $registry->address = filter_input(ecc) ? filter_input(ecc) : '' ;
+
 if (filter_input(INPUT_POST, "idToMod")) {
 
     $id = filter_input(INPUT_POST, "idToMod");
@@ -42,14 +44,13 @@ if (filter_input(INPUT_POST, "idToMod")) {
     $registry->company  = filter_input(INPUT_POST, "company");
     $registry->number  = filter_input(INPUT_POST, "number");
     $registry->registry_category_id  = filter_input(INPUT_POST, "registry_category_id");
+    
+    $registry->address = filter_input(INPUT_POST, "address") ? filter_input(INPUT_POST, "address") : '' ;
+    $registry->email = filter_input(INPUT_POST, "email") ? filter_input(INPUT_POST, "email") : '' ;
+    $registry->notes = filter_input(INPUT_POST, "notes") ? filter_input(INPUT_POST, "notes") : '' ;
+    
 
-    $items = "'name', 'company', 'number', 'registry_category_id'";
-
-    filter_input(INPUT_POST, "address") ?? $items .= ", 'address'";
-    filter_input(INPUT_POST, "email") ?? $items .= ", 'email'";
-    filter_input(INPUT_POST, "notes") ?? $items .= ", 'notes'";
-
-    if ($registry->update([$items],$id)) {
+    if ($registry->update(['name', 'company','address','number','email','registry_category_id','notes'],'id')) {
         header("Location: ../index.php?p=allRegistry&msg=registryCatEditSucc");
         exit;
     } else {
@@ -64,13 +65,11 @@ if (filter_input(INPUT_POST, "idToMod")) {
     $registry->number  = filter_input(INPUT_POST, "number");
     $registry->registry_category_id  = filter_input(INPUT_POST, "registry_category_id");
 
-    $items = "'name', 'company', 'number', 'registry_category_id'";
-
-    filter_input(INPUT_POST, "address") ?? $items .= ", 'address'";
-    filter_input(INPUT_POST, "email") ?? $items .= ", 'email'";
-    filter_input(INPUT_POST, "notes") ?? $items .= ", 'notes'";
-
-    if ($registry->insert([$items])) {
+    $registry->address = filter_input(INPUT_POST, "address") ? filter_input(INPUT_POST, "address") : '' ;
+    $registry->email = filter_input(INPUT_POST, "email") ? filter_input(INPUT_POST, "email") : '' ;
+    $registry->notes = filter_input(INPUT_POST, "notes") ? filter_input(INPUT_POST, "notes") : '' ;
+    
+    if ($registry->insert(['name', 'company','address','number','email','registry_category_id','notes'])) {
         header("Location: ../index.php?p=allRegistry&msg=registrySucc");
         exit;
     } else {

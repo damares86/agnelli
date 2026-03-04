@@ -14,6 +14,7 @@ class Registry extends Common{
     public $name ;
     public $company ;
     public $address ;
+    public $email ;
     public $number ;
     public $registry_category_id ;
     public $notes ;

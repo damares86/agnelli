@@ -101,15 +101,15 @@
                                         <textarea class="tiny" name="address"></textarea>
                                     </div>
 
-                                    <div class="col-md-3 mb-3">
+                                    <div class="col-md-3 mt-3">
                                         <label>Categoria <span class="text-danger">*</span></label>
                                     </div>
-                                    <div class="col-md-9 mb-3">
+                                    <div class="col-md-9 mt-3">
                                         <div class="form-group">
                                             <div class="form-check mandatory">
                                                 <div class="position-relative">
                                                     <fieldset class="form-group">
-                                                        <select class="form-select" id="role" name="role">
+                                                        <select class="form-select" id="role" name="registry_category_id">
                                                             <option value=""></option>
                                                             <?php
                                                             $registry->table = "registry_category" ;
