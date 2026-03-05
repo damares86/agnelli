@@ -65,7 +65,7 @@ $contacts = $registry->showAll('id');
                 </a>
               </td>
               <td>
-                <a href="index.php?p=editAccount&idToMod=<?= $row['id'] ?>" class="btn icon btn-warning shadow edit-link" data-base-url="index.php?p=editAccount&idToMod=<?= $row['id'] ?>">
+                <a href="index.php?p=editRegistry&idToMod=<?= $row['id'] ?>" class="btn icon btn-warning shadow edit-link" data-base-url="index.php?p=editRegistry&idToMod=<?= $row['id'] ?>">
                   <i class="bi bi-pencil-square"></i>
                 </a>
 
@@ -92,7 +92,7 @@ $contacts = $registry->showAll('id');
                           <i class="bx bx-x d-block d-sm-none"></i>
                           <span class="d-none d-sm-block"><?= $common_modal_cancel ?></span>
                         </button>
-                        <span class="d-none d-sm-block"><a href="core/mngAccounts.php?idToDel=<?= $row['id'] ?>" class="btn btn-danger ml-1">
+                        <span class="d-none d-sm-block"><a href="core/mngRegistry.php?idToDel=<?= $row['id'] ?>" class="btn btn-danger ml-1">
                             <?= $common_modal_confirm ?>
                           </a></span>
                       </div>

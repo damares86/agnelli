@@ -40,6 +40,7 @@ $operation = filter_input(INPUT_POST, "operation");
 if (filter_input(INPUT_POST, "idToMod")) {
 
     $id = filter_input(INPUT_POST, "idToMod");
+    $registry->id = $id ;
     $registry->name  = filter_input(INPUT_POST, "name");
     $registry->company  = filter_input(INPUT_POST, "company");
     $registry->number  = filter_input(INPUT_POST, "number");

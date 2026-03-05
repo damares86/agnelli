@@ -82,8 +82,6 @@ class Common
         $query = "INSERT INTO " . $this->prx . $this->table . "
         SET " . $this->fields . "";
 
-    print_r($query);
-
         $stmt = $this->conn->prepare($query);
         // echo $query . '<br>';
 

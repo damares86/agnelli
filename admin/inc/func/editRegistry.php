@@ -1,7 +1,8 @@
 <?php
+$registry->table = "registry_entry" ;
+$registry->id = filter_input(INPUT_GET, "idToMod");
+$stmt1 = $registry->showAllWhere('id', ['id']);
 
-$account->id = filter_input(INPUT_GET, "idToMod");
-$stmt1 = $account->showAllWhere('id', ['id']);
 
 $url_tablePage = filter_input(INPUT_GET, 'tablePage');
 $url_pageName = filter_input(INPUT_GET, 'pageName');
@@ -10,7 +11,7 @@ $url_pageName = filter_input(INPUT_GET, 'pageName');
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3 class="d-inline"><?= $account_edit_header ?></h3>
+                <h3 class="d-inline">Modifica contatto</h3>
                 <a href="index.php?p=<?=$url_pageName?>&tablePage=<?=$url_tablePage?>&pageName=<?=$url_pageName?>" class="btn icon btn-info shadow mx-3 px-3">
                     <i class="bi bi-arrow-left-circle"></i> &nbsp; <?=$common_back?>
                 </a>
@@ -22,8 +23,7 @@ $url_pageName = filter_input(INPUT_GET, 'pageName');
                             <a href="index.php"><?= $common_dashboard ?></a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
-
-                            <?= $account_edit_header ?>
+                            Modifica contatto
                         </li>
                     </ol>
                 </nav>
@@ -34,36 +34,26 @@ $url_pageName = filter_input(INPUT_GET, 'pageName');
 
     <?php
     $id = "";
-    $username = "";
+    $name = "";
+    $company = "";
     $email = "";
-    $avatar = "";
-    $roleId = "";
-    $details = "";
-    $details_opt = "";
+    $address = "";
+    $number = "";
+    $registry_category_id = "";
+    $notes = "";
 
     while ($row1 = $stmt1->fetch(PDO::FETCH_ASSOC)) {
         extract($row1);
 
         $id = $row1['id'];
-        $username = $row1['username'];
+        $name = $row1['name'];
+        $company = $row1['company'];
         $email = $row1['email'];
-        $avatar = $row1['avatar'];
-        $details = unserialize($row1['details']);
-        $details_opt = unserialize($row1['details_opt']);
-
-
-        if (!$avatar) {
-            $avatar = "default.png";
-        }
-
-        $accountroles->account_id = $row1['id'];
-        $stmt2 = $accountroles->showAllWhere('id', ['account_id']);
-
-        while ($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)) {
-            $roleId = $row2['role_id'];
-        }
-    }
-
+        $address = $row1['address'];
+        $registry_category_id = $row1['registry_category_id'];
+        $notes = $row1['notes'];
+   }
+   
     ?>
 
     <section class="section">
@@ -71,171 +61,118 @@ $url_pageName = filter_input(INPUT_GET, 'pageName');
             <div class="col-md-8 col-12">
                 <div class="card shadow">
                     <div class="card-header">
-                        <h4 class="card-title"><?= $account_edit_title ?> <b><?= $username ?></b> </h4>
+                        <h4 class="card-title">Modifica contatto: <b><?= $name ?></b> </h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form form-horizontal" action="core/mngAccounts.php" method="POST" enctype="multipart/form-data" data-parsley-validate>
+                            <form class="form form-horizontal" action="core/mngRegistry.php" method="POST" enctype="multipart/form-data" data-parsley-validate>
                                 <div class="form-body">
                                     <div class="row">
-                                        <div class="col-md-3">
-                                            <label><?= $common_username ?> <span class="text-danger">*</span></label>
+                                   <div class="col-md-3">
+                                        <label>Nome <span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="form-group">
+                                            <div class="form-check mandatory">
+                                                <div class="position-relative">
+                                                    <input type="text" class="form-control" placeholder="Nome" id="first-name-icon" name="name" data-parsley-required="true" value="<?= $name ?>"/>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-md-9">
-                                            <div class="form-group has-icon-left">
-                                                <div class="form-check mandatory">
-                                                    <div class="position-relative">
-                                                        <input type="text" class="form-control" placeholder="Name" id="username" name="username" data-parsley-required="true" value="<?= $username ?>" />
-                                                        <div class="form-control-icon">
-                                                            <i class="bi bi-person"></i>
-                                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>Ditta <span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="form-group">
+                                            <div class="form-check mandatory">
+                                                <div class="position-relative">
+                                                    <input type="text" class="form-control" placeholder="Ditta" name="company" data-parsley-required="true" value="<?= $company ?>" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>Indirizzo </label>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <textarea name="address"><?= $address?></textarea>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>Numero <span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="form-group">
+                                            <div class="form-check mandatory">
+                                                <div class="position-relative">
+                                                    <input type="number" class="form-control" placeholder="Numero" name="number" data-parsley-required="true" value="<?= $number ?>"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label><?= $common_email ?> </label>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="form-group has-icon-left">
+                                            <div class="form-check mandatory">
+                                                <div class="position-relative">
+                                                    <input type="email" class="form-control" placeholder="Email" name="email" value="<?= $email ?>" />
+                                                    <div class="form-control-icon">
+                                                        <i class="bi bi-envelope"></i>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <label><?= $common_email ?> <span class="text-danger">*</span></label>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <div class="form-group has-icon-left">
-                                                <div class="form-check mandatory">
-                                                    <div class="position-relative">
-                                                        <input type="email" class="form-control" placeholder="Email" id="email" name="email" data-parsley-required="true" value="<?= $email ?>" />
-                                                        <div class="form-control-icon">
-                                                            <i class="bi bi-envelope"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    </div>
 
-                                        <div class="col-md-3">
-                                            <label><?= $common_role ?> <span class="text-danger">*</span></label>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <div class="form-group">
-                                                <div class="form-check mandatory">
-                                                    <div class="position-relative">
-                                                        <fieldset class="form-group">
-                                                            <select class="form-select" id="role" name="role">
-                                                                <?php
-                                                                $stmt = $role->showAll('id');
-                                                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                                                    $selected = "";
+                                    <div class="col-md-3">
+                                        <label>Note </label>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <textarea class="tiny" name="notes"><?= $notes ?></textarea>
+                                    </div>
 
-                                                                    if ($row['id'] == $roleId) {
-                                                                        $selected = "selected";
-                                                                    }
-                                                                ?>
-
-                                                                    <option value="<?= $row['id'] ?>" <?= $selected ?>><?= $row['rolename'] ?></option>
-
-                                                                <?php
-
-                                                                }
-                                                                ?>
-                                                            </select>
-                                                        </fieldset>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <?php
-
-                                        require "core/accountDetails.php";
-
-                                        $counter = 0;
-                                        foreach ($account_details as $item) {
-
-                                            $label = "account_add_$item";
-                                            $array_value = array_values($details[$counter]);
-                                            $value = $array_value[0];
-
-
-                                            $item_label = ucfirst($item);
-
-                                        ?>
-                                            <div class="col-md-3">
-                                                <label><?= $item_label ?> <span class="text-danger">*</span></label>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <div class="form-group">
-                                                    <div class="form-check mandatory">
-                                                        <div class="position-relative">
+                                    <div class="col-md-3 mt-3">
+                                        <label>Categoria <span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-md-9 mt-3">
+                                        <div class="form-group">
+                                            <div class="form-check mandatory">
+                                                <div class="position-relative">
+                                                    <fieldset class="form-group">
+                                                        <select class="form-select" id="role" name="registry_category_id">
+                                                            <option value=""></option>
                                                             <?php
+                                                            $registry->table = "registry_category" ;
+                                                            $stmt_cat = $registry->showAll('id');
+                                                            while ($row_cat = $stmt_cat->fetch(PDO::FETCH_ASSOC)) {
+                                                                $checked = "" ;
+                                                                if($row_cat['id'] == $registry_category_id){
+                                                                    $selected = "selected";
+                                                                }
+                                                            ?>
 
-                                                            $type = "text";
-                                                            if ($item == "birth") {
-                                                                $type = "date";
+                                                                    <option value="<?= $row_cat['id'] ?>" <?= $selected ?>><?= $row_cat['name'] ?></option>
+
+                                                            <?php
                                                             }
                                                             ?>
-                                                            <input type="<?= $type ?>" class="form-control" placeholder="<?= $item_label ?>" name="<?= $item ?>" data-parsley-required="true" value="<?= $value ?>" />
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        <?php
-                                            $counter++;
-                                        }
-
-                                        $counter = 0;
-                                        foreach ($account_details_opt as $item) {
-
-                                            $label = "account_add_$item";
-                                            // if(array_values($details_opt[$counter])){
-                                            $array_value = array_values($details_opt[$counter]);
-                                            $value = $array_value[0];
-                                            // }
-
-                                        ?>
-                                            <div class="col-md-3">
-                                                <label><?= $$label ?> <?= $account_add_optional ?></label>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <div class="form-group">
-                                                    <div class="position-relative">
-                                                        <?php
-                                                        $type = "text";
-                                                        if ($item == "birth") {
-                                                            $type = "date";
-                                                        }
-                                                        ?>
-                                                        <input type="<?= $type ?>" class="form-control" placeholder="<?= $$label ?>" name="<?= $item ?>" data-parsley-required="true" value="<?= $value ?>" />
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        <?php
-                                            $counter++;
-                                        }
-
-                                        ?>
-
-
-                                        <div class="col-md-3">
-                                            <label><?= $account_add_avatar ?></label>
-                                        </div>
-                                        <div class="col-md-2 text-center">
-                                            <div class="avatar avatar-lg me-3">
-                                                <img src="uploads/avatar/<?= $avatar ?>" alt="" srcset="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="form-group">
-                                                <div>
-                                                    <input class="form-control" type="file" id="formFile" name="avatar" />
+                                                        </select>
+                                                    </fieldset>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
 
+                                    <input type="hidden" name="origin" value="addRegistry">
                                         <input type="hidden" name="operation" value="edit">
-                                        <input type="hidden" name="avatar_orig" value="<?= $avatar ?>">
                                         <input type="hidden" name="idToMod" value="<?= $id ?>">
-                                        <input type="hidden" name="origin" value="editAccount">
+                                        <input type="hidden" name="origin" value="editRegistry">
                                         <input type="hidden" name="url_tablePage" value="<?= $url_tablePage ?>">
                                         <input type="hidden" name="url_pageName" value="<?= $url_pageName ?>">
 
@@ -263,84 +200,3 @@ $url_pageName = filter_input(INPUT_GET, 'pageName');
             </div>
         </div>
     </section>
-
-    <section class="section">
-        <div class="row">
-            <div class="col-md-8 col-12">
-                <div class="card shadow">
-                    <div class="card-header">
-                        <h4 class="card-title"><?= $account_edit_password ?></h4>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-body">
-                            <form class="form form-horizontal" action="core/mngAccounts.php" method="POST" enctype="multipart/form-data" data-parsley-validate>
-                                <div class="form-body">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <label><?= $common_password ?> <span class="text-danger">*</span></label>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <div class="form-group has-icon-left">
-                                                <div class="form-check mandatory">
-                                                    <div class="position-relative">
-                                                    <input type="password" class="form-control" id="password" placeholder="Password" name="password" data-parsley-required="true" />
-                                                    <div class="form-control-icon">
-                                                        <i class="bi bi-lock"></i>
-                                                    </div>
-                                                    <div class="toggle-password" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
-                                                        <i class="bi bi-eye" id="togglePassword"></i>
-                                                    </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <input type="hidden" name="operation" value="password">
-                                        <input type="hidden" name="idToMod" value="<?= $id ?>">
-                                        <input type="hidden" name="origin" value="editAccount">
-
-                                        <div class="col-12 d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-primary me-1 mb-1">
-                                                <?= $common_submit ?>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-<script>
-    document.getElementById('togglePassword').addEventListener('click', function() {
-        const passwordInput = document.getElementById('password');
-        const passwordIcon = this;
-
-        // Controlla il tipo di input e cambia tra password e text
-        if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
-            passwordIcon.classList.remove('bi-eye');
-            passwordIcon.classList.add('bi-eye-slash');
-        } else {
-            passwordInput.type = 'password';
-            passwordIcon.classList.remove('bi-eye-slash');
-            passwordIcon.classList.add('bi-eye');
-        }
-
-        const passwordConfirmInput = document.getElementById('password_confirm');
-        const passwordConfirmIcon = this;
-
-        // Controlla il tipo di input e cambia tra password e text
-        if (passwordConfirmInput.type === 'password') {
-            passwordConfirmInput.type = 'text';
-            passwordConfirmInput.classList.remove('bi-eye');
-            passwordConfirmInput.classList.add('bi-eye-slash');
-        } else {
-            passwordConfirmIcon.type = 'password';
-            passwordConfirmIcon.classList.remove('bi-eye-slash');
-            passwordConfirmIcon.classList.add('bi-eye');
-        }
-    });
-</script>
