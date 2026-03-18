@@ -72,7 +72,7 @@
                                         <div class="form-group">
                                             <div class="form-check mandatory">
                                                 <div class="position-relative">
-                                                    <input type="number" class="form-control" placeholder="Numero" name="number" data-parsley-required="true" />
+                                                    <input type="text" class="form-control" placeholder="Numero" name="number" data-parsley-required="true" />
                                                 </div>
                                             </div>
                                         </div>
@@ -109,11 +109,11 @@
                                             <div class="form-check mandatory">
                                                 <div class="position-relative">
                                                     <fieldset class="form-group">
-                                                        <select class="form-select" id="role" name="registry_category_id">
+                                                        <select class="form-select" id="role" name="registry_category_id" data-parsley-required="true" >
                                                             <option value=""></option>
                                                             <?php
                                                             $registry->table = "registry_category" ;
-                                                            $stmt = $registry->showAll('id');
+                                                            $stmt = $registry->showAll('name');
                                                             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                                             ?>
 

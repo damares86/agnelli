@@ -37,6 +37,7 @@ $contacts = $registry->showAll('id');
         <thead>
           <tr>
             <th>Nome</th>
+            <th>Ditta</th>
             <th>Categoria</th>
             <th>Numero</th>
             <th>Dettaglio</th>
@@ -57,6 +58,7 @@ $contacts = $registry->showAll('id');
           ?>
             <tr>
               <td><?= $row['name'] ?></td>
+              <td><?= $row['company'] ?></td>
               <td><?= $category_name ?></td>
               <td><?= $row['number'] ?></td>
               <td>

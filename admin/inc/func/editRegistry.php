@@ -108,7 +108,7 @@ $url_pageName = filter_input(INPUT_GET, 'pageName');
                                         <div class="form-group">
                                             <div class="form-check mandatory">
                                                 <div class="position-relative">
-                                                    <input type="number" class="form-control" placeholder="Numero" name="number" data-parsley-required="true" value="<?= $number ?>"/>
+                                                    <input type="text" class="form-control" placeholder="Numero" name="number" data-parsley-required="true" value="<?= $number ?>"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -145,13 +145,13 @@ $url_pageName = filter_input(INPUT_GET, 'pageName');
                                             <div class="form-check mandatory">
                                                 <div class="position-relative">
                                                     <fieldset class="form-group">
-                                                        <select class="form-select" id="role" name="registry_category_id">
+                                                        <select class="form-select" id="role" name="registry_category_id" data-parsley-required="true" >
                                                             <option value=""></option>
                                                             <?php
                                                             $registry->table = "registry_category" ;
-                                                            $stmt_cat = $registry->showAll('id');
+                                                            $stmt_cat = $registry->showAll('name');
                                                             while ($row_cat = $stmt_cat->fetch(PDO::FETCH_ASSOC)) {
-                                                                $checked = "" ;
+                                                                $selected = "" ;
                                                                 if($row_cat['id'] == $registry_category_id){
                                                                     $selected = "selected";
                                                                 }
