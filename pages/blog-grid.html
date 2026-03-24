@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Affan - PWA Mobile HTML Template">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+  <meta name="theme-color" content="#0134d4">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <!-- Title -->
+  <title>Affan - PWA Mobile HTML Template</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/img/core-img/favicon.ico">
+  <link rel="apple-touch-icon" href="assets/img/icons/icon-96x96.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="assets/img/icons/icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="assets/img/icons/icon-167x167.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/icon-180x180.png">
+
+  <!-- Style CSS -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="spinner-grow text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Setting Popup Overlay -->
+  <div id="setting-popup-overlay"></div>
+
+  <!-- Setting Popup Card -->
+  <div class="card setting-popup-card shadow-lg" id="settingCard">
+    <div class="card-body">
+      <div class="container">
+        <div class="setting-heading d-flex align-items-center justify-content-between mb-3">
+          <p class="mb-0">Settings</p>
+          <div class="btn-close" id="settingCardClose"></div>
+        </div>
+
+        <div class="single-setting-panel">
+          <div class="form-check form-switch mb-2">
+            <input class="form-check-input" type="checkbox" id="availabilityStatus" checked>
+            <label class="form-check-label" for="availabilityStatus">Availability status</label>
+          </div>
+        </div>
+
+        <div class="single-setting-panel">
+          <div class="form-check form-switch mb-2">
+            <input class="form-check-input" type="checkbox" id="sendMeNotifications" checked>
+            <label class="form-check-label" for="sendMeNotifications">Send me notifications</label>
+          </div>
+        </div>
+
+        <div class="single-setting-panel">
+          <div class="form-check form-switch mb-2">
+            <input class="form-check-input" type="checkbox" id="darkSwitch">
+            <label class="form-check-label" for="darkSwitch">Dark mode</label>
+          </div>
+        </div>
+
+        <div class="single-setting-panel">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="rtlSwitch">
+            <label class="form-check-label" for="rtlSwitch">RTL mode</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Area -->
+  <div class="header-area" id="headerArea">
+    <div class="container">
+      <!-- Header Content -->
+      <div class="header-content position-relative d-flex align-items-center justify-content-between">
+        <!-- Back Button -->
+        <div class="back-button">
+          <a href="pages.html">
+            <i class="ti ti-arrow-left"></i>
+          </a>
+        </div>
+
+        <!-- Page Title -->
+        <div class="page-heading">
+          <h6 class="mb-0">Blog Grid</h6>
+        </div>
+
+        <!-- Settings -->
+        <div class="setting-wrapper">
+          <div class="setting-trigger-btn" id="settingTriggerBtn">
+            <i class="ti ti-settings"></i>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-content-wrapper py-3">
+    <div class="blog-wrapper">
+      <div class="container">
+        <div class="row g-3">
+
+          <!-- Single Blog Card -->
+          <div class="col-6 col-sm-4 col-md-3">
+            <div class="card position-relative">
+              <img class="card-img-top" src="assets/img/bg-img/22.jpg" alt="">
+              <span class="badge text-bg-warning position-absolute card-badge">Business</span>
+              <div class="card-body">
+                <span class="badge bg-danger rounded-pill mb-2 d-inline-block">16 Dec</span>
+                <a class="blog-title d-block mb-3 text-dark" href="blog-details.html">A collection of textile
+                  samples lay spread out on the table</a>
+                <a class="btn btn-primary btn-sm" href="blog-details.html">Read More</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Single Blog Card -->
+          <div class="col-6 col-sm-4 col-md-3">
+            <div class="card position-relative">
+              <img class="card-img-top" src="assets/img/bg-img/23.jpg" alt="">
+              <span class="badge text-bg-warning position-absolute card-badge">Agency</span>
+              <div class="card-body">
+                <span class="badge bg-danger rounded-pill mb-2 d-inline-block">13 Dec</span>
+                <a class="blog-title d-block mb-3 text-dark" href="blog-details.html">One morning, when Gregor
+                  Samsa
+                  woke from troubled dreams</a>
+                <a class="btn btn-primary btn-sm" href="blog-details.html">Read More</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Single Blog Card -->
+          <div class="col-6 col-sm-4 col-md-3">
+            <div class="card position-relative">
+              <img class="card-img-top" src="assets/img/bg-img/24.jpg" alt="">
+              <span class="badge text-bg-warning position-absolute card-badge">Info</span>
+              <div class="card-body">
+                <span class="badge bg-danger rounded-pill mb-2 d-inline-block">11 Dec</span>
+                <a class="blog-title d-block mb-3 text-dark" href="blog-details.html">He lay on his armour-like
+                  back</a>
+                <a class="btn btn-primary btn-sm" href="blog-details.html">Read More</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Single Blog Card -->
+          <div class="col-6 col-sm-4 col-md-3">
+            <div class="card position-relative">
+              <img class="card-img-top" src="assets/img/bg-img/25.jpg" alt="">
+              <span class="badge text-bg-warning position-absolute card-badge">World</span>
+              <div class="card-body">
+                <span class="badge bg-danger rounded-pill mb-2 d-inline-block">6 Dec</span>
+                <a class="blog-title d-block mb-3 text-dark" href="blog-details.html">The 5 best review in
+                  Affan</a>
+                <a class="btn btn-primary btn-sm" href="blog-details.html">Read More</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Single Blog Card -->
+          <div class="col-6 col-sm-4 col-md-3">
+            <div class="card position-relative">
+              <img class="card-img-top" src="assets/img/bg-img/26.jpg" alt="">
+              <span class="badge text-bg-warning position-absolute card-badge">Fashion</span>
+              <div class="card-body">
+                <span class="badge bg-danger rounded-pill mb-2 d-inline-block">1 Dec</span>
+                <a class="blog-title d-block mb-3 text-dark" href="blog-details.html">It wasn't a dream. His room,
+                  a proper human room although</a>
+                <a class="btn btn-primary btn-sm" href="blog-details.html">Read More</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Single Blog Card -->
+          <div class="col-6 col-sm-4 col-md-3">
+            <div class="card position-relative">
+              <img class="card-img-top" src="assets/img/bg-img/27.jpg" alt="">
+              <span class="badge text-bg-warning position-absolute card-badge">Sports</span>
+              <div class="card-body">
+                <span class="badge bg-danger rounded-pill mb-2 d-inline-block">25 Nov</span>
+                <a class="blog-title d-block mb-3 text-dark" href="blog-details.html">The 5 best review in
+                  Affan</a>
+                <a class="btn btn-primary btn-sm" href="blog-details.html">Read More</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="card mt-3">
+        <div class="card-body">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center pagination-one">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <i class="ti ti-chevron-left"></i>
+                </a>
+              </li>
+              <li class="page-item active">
+                <a class="page-link" href="#">1</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="#">2</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="#">...</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="#">9</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <i class="ti ti-chevron-right"></i>
+                </a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Nav -->
+  <div class="footer-nav-area" id="footerNav">
+    <div class="container px-0">
+      <!-- Footer Content -->
+      <div class="footer-nav position-relative">
+        <ul class="h-100 d-flex align-items-center justify-content-between ps-0">
+          <li class="active">
+            <a href="home.html">
+              <i class="ti ti-home"></i>
+              <span>Home</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="pages.html">
+              <i class="ti ti-folders"></i>
+              <span>Pages</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="elements.html">
+              <i class="ti ti-heart"></i>
+              <span>Elements</span>
+            </a>
+          </li>
+          
+          <li>
+            <a href="settings.html">
+              <i class="ti ti-settings"></i>
+              <span>Settings</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- All JavaScript Files -->
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/slideToggle.min.js"></script>
+  <script src="assets/js/internet-status.js"></script>
+  <script src="assets/js/tiny-slider.js"></script>
+  <script src="assets/js/venobox.min.js"></script>
+  <script src="assets/js/countdown.js"></script>
+  <script src="assets/js/rangeslider.min.js"></script>
+  <script src="assets/js/vanilla-dataTables.min.js"></script>
+  <script src="assets/js/index.js"></script>
+  <script src="assets/js/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/js/isotope.pkgd.min.js"></script>
+  <script src="assets/js/nice-select2.js"></script>
+  <script src="assets/js/dark-rtl.js"></script>
+  <script src="assets/js/active.js"></script>
+  <script src="assets/js/pwa.js"></script>
+</body>
+
+</html>

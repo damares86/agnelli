@@ -29,7 +29,7 @@ $cat = $registry->showAll('id');
 <section class="section">
   <div class="card shadow">
     <div class="card-header">Tutte le categorie &nbsp; &nbsp; &nbsp;
-      <a href="index.php?p=addREgistryCat" class="btn icon icon-left btn-success shadow"><i data-feather="plus-circle"></i> Aggiungi categoria</a>
+      <a href="index.php?p=addRegistryCat" class="btn icon icon-left btn-success shadow"><i data-feather="plus-circle"></i> Aggiungi categoria</a>
     </div>
     <div class="card-body">
 
