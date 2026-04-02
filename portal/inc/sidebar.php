@@ -1,5 +1,5 @@
 <button id="burger-menu" class="burger-menu">
-☰
+  ☰
 </button>
 <div id="side_luna" class="">
   <div class="sidebar_luna sidebar-wrapper_luna shadow">
@@ -29,6 +29,12 @@
     <?php
     }
     ?>
+    <style>
+      li.active>a {
+        font-weight: bold;
+      }
+    </style>
+
     <ul class="list-unstyled">
       <?php
       $active = "";
@@ -62,12 +68,15 @@
             }
           }
         }
-
-        if ($page_id == $parent_row['id'] || $check_parent == 1) {
-          $active = "active";
+        if($check_parent == 1){
+          if ($page_id == $parent_row['id'] ) {
+            $active = "active";
+          }
         }
+        
       ?>
-        <li class="d-flex align-items-center <?= $active ?>">
+        <li class="d-flex align-items-center <?= $active ?>" data-parent-id="<?= $parent_row['id'] ?>">
+
           <a href="manual.php<?= $link ?>"><?= $title ?></a>
           <?php
           if ($hasSub) {
@@ -130,65 +139,69 @@
 </div>
 
 <script>
-$(document).ready(function() {
-  var currentPage = <?= $page_id ?>;
-  var parentPage = <?= $check_parent ?>;
-  var parentOfChild = null;
+  $(document).ready(function() {
+    const currentPage = <?= $page_id ?>;
+    const parentPage = <?= $check_parent ?>;
+    let parentOfChild = null;
 
-  // Funzione per aprire il submenu
-  function openSubmenu($submenu) {
-    $submenu.addClass('active').slideDown();
-    $submenu.prev('li').find('.toggle-submenu').text('-');
-  }
+    function openSubmenu($submenu) {
+      $submenu.addClass('active').show(); // show senza animazione
+      $submenu.prev('li').find('.toggle-submenu').text('-');
+    }
 
-  // Apri i submenu dei parent attivi
-  $('a[data-parent-id]').each(function() {
-    var $this = $(this);
-    var parentId = $this.data('parent-id');
+    function closeSubmenu($submenu) {
+      $submenu.removeClass('active').slideUp();
+      $submenu.prev('li').find('.toggle-submenu').text('+');
+    }
 
-    // Controllo per parentPage e currentPage
-    if (parentId == parentPage || parentId == currentPage) {
-      var $submenu = $this.closest('.submenu');
-      openSubmenu($submenu);
+    // Apri submenu se uno dei figli è attivo
+    $('a[data-parent-id]').each(function() {
+      const $this = $(this);
+      const parentId = $this.data('parent-id');
 
-      // Se la pagina corrente è un child, memorizza il parent
-      if (parentId == currentPage) {
-        parentOfChild = $this.data('parent-id');
+      if (parentId == parentPage || parentId == currentPage) {
+        const $submenu = $this.closest('ul.submenu');
+        openSubmenu($submenu);
+
+        if (parentId == currentPage) {
+          parentOfChild = parentId;
+        }
       }
-    }
-  });
-
-  // Se la pagina corrente è un child, apri anche il parent e il relativo submenu
-  if (parentOfChild !== null) {
-    $('a[data-parent-id="' + parentOfChild + '"]').each(function() {
-      var $submenu = $(this).closest('.submenu');
-      openSubmenu($submenu);
     });
-  }
 
-  // Aggiungi la classe active anche al parent del submenu
-  $('.submenu').each(function() {
-    if ($(this).find('li.active').length > 0) {
-      $(this).prev('li').addClass('active');
-      openSubmenu($(this));
+    // Apri anche il parent se la pagina corrente è un child
+    if (parentOfChild !== null) {
+      $('a[data-parent-id="' + parentOfChild + '"]').each(function() {
+        const $submenu = $(this).closest('ul.submenu');
+        openSubmenu($submenu);
+      });
     }
-  });
 
-  // Gestione del click sul toggle del submenu
-  $('.toggle-submenu').on('click', function(e) {
-    e.preventDefault();
-    var $submenu = $(this).closest('li').next('.submenu');
-    $submenu.slideToggle();
-    $(this).text(function(_, text) {
-      return text === '+' ? '-' : '+';
+    // Aggiungi .active anche al parent se un figlio è attivo
+    $('.submenu').each(function() {
+      if ($(this).find('li.active').length > 0) {
+        $(this).prev('li').addClass('active');
+        openSubmenu($(this));
+      }
+    });
+
+    // Gestione del click su +
+    $('.toggle-submenu').on('click', function(e) {
+      e.preventDefault();
+      const $submenu = $(this).closest('li').next('.submenu');
+
+      if ($submenu.hasClass('active')) {
+        closeSubmenu($submenu);
+        $(this).text('+');
+      } else {
+        openSubmenu($submenu);
+        $(this).text('-');
+      }
+    });
+
+    // Burger menu
+    $('#burger-menu').on('click', function() {
+      $('#side_luna').toggleClass('active');
     });
   });
-});
-
-
-  // Gestione del click sul burger menu
-  $('#burger-menu').on('click', function() {
-    $('#side_luna').toggleClass('active');
-  });
- 
 </script>

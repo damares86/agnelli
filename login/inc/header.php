@@ -87,11 +87,13 @@ if (isset($_COOKIE['damares-login'])) {
         header("Location: " . $row['redirect'] . "");
         exit;
       } else {
-        header("Location: ../admin/");
+        //header("Location: ../admin/");
+        header("Location: ../");
         exit;
       }
     } else {
-      header("Location: ../admin/");
+      //header("Location: ../admin/");
+      header("Location: ../");
       exit;
     }
   }

@@ -2,120 +2,46 @@
 require 'inc/header.php';
 ?>
 
-  <!-- Header Area -->
-  <div class="header-area" id="headerArea">
-    <div class="container">
-      <!-- Header Content -->
-      <div class="header-content header-style-five position-relative d-flex align-items-center justify-content-between">
-        <!-- Logo Wrapper -->
-        <div class="logo-wrapper">
-          <a href="home.html">
-            <img class="logo-light" src="assets/img/core-img/logo.png" alt="">
-            <img class="logo-dark" src="assets/img/core-img/logo-dark.png" alt="">
-          </a>
-        </div>
+<!-- Header Area -->
+<div class="header-area" id="headerArea">
+  <div class="container">
+    <!-- Header Content -->
+    <div class="header-content header-style-five position-relative d-flex align-items-center justify-content-between">
+      <!-- Logo Wrapper -->
+      <div class="logo-wrapper">
+        <a href="home.html">
+          <img class="logo-light" src="assets/img/core-img/logo.png" alt="">
+          <img class="logo-dark" src="assets/img/core-img/logo-dark.png" alt="">
+        </a>
+      </div>
 
-        <!-- Navbar Toggler -->
-        <div class="navbar-toggler" id="affanNavbarToggler" data-bs-toggle="offcanvas" data-bs-target="#affanOffcanvas"
-          aria-controls="affanOffcanvas">
-          <span class="d-block"></span>
-          <span class="d-block"></span>
-          <span class="d-block"></span>
-        </div>
+      <!-- Navbar Toggler -->
+      <div class="navbar-toggler" id="affanNavbarToggler" data-bs-toggle="offcanvas" data-bs-target="#affanOffcanvas"
+        aria-controls="affanOffcanvas">
+        <span class="d-block"></span>
+        <span class="d-block"></span>
+        <span class="d-block"></span>
       </div>
     </div>
   </div>
+</div>
 <?php
 require 'inc/menu.php';
 ?>
 
-  <div class="page-content-wrapper">
+<div class="page-content-wrapper">
 
-    <!-- Welcome Toast -->
-    <div class="toast toast-autohide custom-toast-1 home-page-toast shadow" role="alert" aria-live="assertive"
-      aria-atomic="true" data-bs-delay="60000" data-bs-autohide="true" id="installWrap">
-      <div class="toast-body p-0">
-        <div class="toast-text">
-          <h6 class="mb-1">Welcome to Affan!</h6>
-          <span class="d-block mb-2">Click the <strong class="text-primary">Install Now</strong> button & enjoy it just
-            like an
-            app.</span>
-          <button id="installAffan" class="btn btn-sm btn-warning">Install Now</button>
-        </div>
-      </div>
-      <button class="btn btn-close position-relative p-2" type="button" data-bs-dismiss="toast"
-        aria-label="Close"></button>
-    </div>
-
-    <!-- Tiny Slider One Wrapper -->
-    <div class="tiny-slider-one-wrapper" dir="ltr">
-      <div class="tiny-slider-one">
-        <!-- Single Hero Slide -->
-        <div>
-          <div class="single-hero-slide bg-overlay" style="background-image: url('assets/img/bg-img/31.jpg')">
-            <div class="h-100 d-flex align-items-center text-center">
-              <div class="container">
-                <h3 class="text-white mb-1">Built with Bootstrap 5.3</h3>
-                <p class="text-white">Create fast, responsive, and modern mobile experiences.</p>
-                <a class="btn btn-creative btn-warning" href="#">Get Started <i class="ti ti-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Single Hero Slide -->
-        <div>
-          <div class="single-hero-slide bg-overlay" style="background-image: url('assets/img/bg-img/33.jpg')">
-            <div class="h-100 d-flex align-items-center text-center">
-              <div class="container">
-                <h3 class="text-white mb-1">Framework-Free Code</h3>
-                <p class="text-white">Easy to customize and maintain with vanilla JS.</p>
-                <a class="btn btn-creative btn-warning" href="#">Buy Now <i class="ti ti-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Single Hero Slide -->
-        <div>
-          <div class="single-hero-slide bg-overlay" style="background-image: url('assets/img/bg-img/32.jpg')">
-            <div class="h-100 d-flex align-items-center text-center">
-              <div class="container">
-                <h3 class="text-white mb-1">Installable PWA</h3>
-                <p class="text-white">Fast, reliable, and accessible directly from your device.</p>
-                <a class="btn btn-creative btn-warning" href="#">Buy Now <i class="ti ti-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Single Hero Slide -->
-        <div>
-          <div class="single-hero-slide bg-overlay" style="background-image: url('assets/img/bg-img/33.jpg')">
-            <div class="h-100 d-flex align-items-center text-center">
-              <div class="container">
-                <h3 class="text-white mb-1">Everything You Need</h3>
-                <p class="text-white">Build complete websites in days, not months.</p>
-                <a class="btn btn-creative btn-warning" href="#">Buy Now <i class="ti ti-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Single Hero Slide -->
-        <div>
-          <div class="single-hero-slide bg-overlay" style="background-image: url('assets/img/bg-img/1.jpg')">
-            <div class="h-100 d-flex align-items-center text-center">
-              <div class="container">
-                <h3 class="text-white mb-1">Dark &amp; RTL Ready</h3>
-                <p class="text-white">Switch easily between Dark Mode and RTL layouts.</p>
-                <a class="btn btn-creative btn-warning" href="#">Buy Now <i class="ti ti-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
+  <div>
+    <div class="single-hero-slide bg-overlay py-3" style="background-image: url('assets/img/bg-img/31.jpg')">
+      <div class="h-100 d-flex align-items-center text-center">
+        <div class="container">
+          <h3 class="text-white mb-1">Built with Bootstrap 5.3</h3>
+          <p class="text-white">Create fast, responsive, and modern mobile experiences.</p>
+          <a class="btn btn-creative btn-warning" href="#">Get Started <i class="ti ti-arrow-right"></i></a>
         </div>
       </div>
     </div>
+
 
     <div class="pt-3"></div>
 
@@ -372,7 +298,7 @@ require 'inc/menu.php';
     <div class="pb-3"></div>
   </div>
 
-<?php
-require 'inc/nav.php';
-require 'inc/footer.php';
-?>
+  <?php
+  require 'inc/nav.php';
+  require 'inc/footer.php';
+  ?>

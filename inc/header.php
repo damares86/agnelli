@@ -1,3 +1,109 @@
+<?php
+require "admin/core/prefix.php";
+require "admin/inc/damares_version.php";
+session_start();
+spl_autoload_register('autoloader');
+
+function autoloader($class)
+{
+    include("admin/class/$class.php");
+}
+
+$database = new Database();
+$db = $database->getConnection();
+
+// recall of all the classes
+$files = glob("admin/class/*.php", GLOB_BRACE);
+rsort($files);
+
+// creation of the file with all the initialization of the classes
+if (!is_file('admin/inc/class_initialize.php')) {
+    $file_handle = fopen('admin/inc/class_initialize.php', 'w');
+    fwrite($file_handle, '<?php');
+    fwrite($file_handle, "\n");
+    foreach ($files as $filename) {
+        $nomefile = pathinfo($filename);
+        $file = $nomefile['filename'];
+        $file_var = strtolower($file);
+        fwrite($file_handle, '$' . $file_var . ' = new ' . $file . '($db);');
+        fwrite($file_handle, "\n");
+    }
+    if ($prefix) {
+        fwrite($file_handle, '$common->prx = "' . $prefix . '_";');
+        fwrite($file_handle, "\n");
+    }
+    fwrite($file_handle, "?>");
+    chmod('admin/inc/class_initialize.php', 0777);
+}
+include "admin/inc/class_initialize.php";
+
+// check if the user is logged
+if (!isset($_SESSION['loggedin']) && !isset($_SESSION['account_id'])) {
+    require "admin/inc/check_cookie.php";
+    header('Location: login/auth-login.php?err=noLogin');
+    exit;
+} else if (isset($_COOKIE['damares-login'])) {
+    $pieces = explode(",", $_COOKIE['damares-login']);
+    $auth->id = $pieces[0];
+    $id = $pieces[0];
+    $auth->auth_token = $pieces[1];
+
+    if (!$auth->checkCookie() > 0) {
+        header("Location: login/auth-login.php?err=noLogin");
+        exit;
+    }
+
+    $role->id = $_SESSION['role_id'];
+
+    $setting->name = "role_redirect";
+    $stmt = $setting->showAllWhere('id', ['name']);
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $redir = $row['value'];
+
+    if ($redir == 1) {
+        $stmt = $role->showAllWhere('id', ['id']);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        extract($row);
+        if ($row['redirect'] != "none") {
+            header("Location: " . $row['redirect'] . "");
+            exit;
+        }
+    }
+
+    $export = false;
+    $plugin->pluginname = "export_xlsx";
+
+    if ($plugin->itemExists('pluginname') && $plugin->isActive() == 1) {
+        $export = true;
+    }
+}
+
+// check if the debug mode is active
+$setting->name = "debug";
+$dbg = $setting->showAllWhere('id', ['name']);
+$row_debug = $dbg->fetch(PDO::FETCH_ASSOC);
+extract($row_debug);
+
+if ($row_debug['value'] == 1) {
+    require 'admin/vendor/autoload.php';        // If installed via composer
+    $debug = new \bdk\Debug(array(
+        'collect' => true,
+        'output' => true,
+    ));
+}
+
+// check the language set
+$setting->name = "lang";
+$stmt = $setting->showByName();
+$lang = $stmt['value'];
+$_SESSION['lang'] = $lang;
+
+foreach (glob("admin/locale/$lang/*.php") as $row) {
+    require "$row";
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
