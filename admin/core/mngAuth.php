@@ -77,7 +77,7 @@ if($email_exists && password_verify($postpass,$auth->password)){
       }
     }
 
-    header("Location: ../");
+    header("Location: ../../");
     exit;
     
 } else {
