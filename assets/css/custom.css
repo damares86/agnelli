@@ -1,0 +1,11 @@
+.header-content .logo-wrapper a img{
+    max-height:50px;
+}
+
+body{
+    background-color: #008db1;;
+}
+
+.header-area{
+    background-color: #fff;
+}

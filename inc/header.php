@@ -110,7 +110,7 @@ foreach (glob("admin/locale/$lang/*.php") as $row) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Affan - PWA Mobile HTML Template">
+  <meta name="description" content="Agnelli Manager">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
@@ -119,17 +119,14 @@ foreach (glob("admin/locale/$lang/*.php") as $row) {
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
   <!-- Title -->
-  <title>Affan - PWA Mobile HTML Template</title>
+  <title>Agnelli Manager</title>
 
   <!-- Favicon -->
-  <link rel="icon" href="assets/img/core-img/favicon.ico">
-  <link rel="apple-touch-icon" href="assets/img/icons/icon-96x96.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="assets/img/icons/icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="167x167" href="assets/img/icons/icon-167x167.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/icon-180x180.png">
+  <link rel="icon" href="assets/img/favicon/favicon.ico">
 
   <!-- Style CSS -->
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
 
   <!-- Web App Manifest -->
   <link rel="manifest" href="manifest.json">
@@ -142,3 +139,27 @@ foreach (glob("admin/locale/$lang/*.php") as $row) {
       <span class="visually-hidden">Loading...</span>
     </div>
   </div>
+
+  <!-- Header Area -->
+<div class="header-area" id="headerArea">
+  <div class="container">
+    <!-- Header Content -->
+    <div class="header-content header-style-five position-relative d-flex align-items-center justify-content-between">
+      <!-- Logo Wrapper -->
+      <div class="logo-wrapper">
+        <a href="home.html">
+          <img class="logo-light" src="assets/img/logo_agnelli_scritta.png" alt="">
+          <img class="logo-dark" src="assets/img/logo_agnelli_scritta.png" alt="">
+        </a>
+      </div>
+
+      <!-- Navbar Toggler -->
+      <div class="navbar-toggler" id="affanNavbarToggler" data-bs-toggle="offcanvas" data-bs-target="#affanOffcanvas"
+        aria-controls="affanOffcanvas">
+        <span class="d-block"></span>
+        <span class="d-block"></span>
+        <span class="d-block"></span>
+      </div>
+    </div>
+  </div>
+</div>

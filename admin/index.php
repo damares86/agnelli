@@ -6,8 +6,6 @@ $setting->name = "layout";
 $stmt = $setting->showAllWhere('id', ['name']);
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 $layout = $row['value'];
-print_r($_SESSION);
-
 ?>
 
 <body>

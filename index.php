@@ -1,46 +1,11 @@
 <?php
 require 'inc/header.php';
-?>
-
-<!-- Header Area -->
-<div class="header-area" id="headerArea">
-  <div class="container">
-    <!-- Header Content -->
-    <div class="header-content header-style-five position-relative d-flex align-items-center justify-content-between">
-      <!-- Logo Wrapper -->
-      <div class="logo-wrapper">
-        <a href="home.html">
-          <img class="logo-light" src="assets/img/core-img/logo.png" alt="">
-          <img class="logo-dark" src="assets/img/core-img/logo-dark.png" alt="">
-        </a>
-      </div>
-
-      <!-- Navbar Toggler -->
-      <div class="navbar-toggler" id="affanNavbarToggler" data-bs-toggle="offcanvas" data-bs-target="#affanOffcanvas"
-        aria-controls="affanOffcanvas">
-        <span class="d-block"></span>
-        <span class="d-block"></span>
-        <span class="d-block"></span>
-      </div>
-    </div>
-  </div>
-</div>
-<?php
-require 'inc/menu.php';
+require 'inc/sidebar.php';
 ?>
 
 <div class="page-content-wrapper">
 
   <div>
-    <div class="single-hero-slide bg-overlay py-3" style="background-image: url('assets/img/bg-img/31.jpg')">
-      <div class="h-100 d-flex align-items-center text-center">
-        <div class="container">
-          <h3 class="text-white mb-1">Built with Bootstrap 5.3</h3>
-          <p class="text-white">Create fast, responsive, and modern mobile experiences.</p>
-          <a class="btn btn-creative btn-warning" href="#">Get Started <i class="ti ti-arrow-right"></i></a>
-        </div>
-      </div>
-    </div>
 
 
     <div class="pt-3"></div>
