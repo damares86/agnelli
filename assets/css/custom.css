@@ -17,3 +17,7 @@ body{
 #dataTable_filter, #dataTable_length, .dataTable-search{
     display:none;
 }
+
+.sidenav-profile{
+    background-color: #008db1;
+}

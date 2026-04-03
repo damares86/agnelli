@@ -207,7 +207,7 @@
                 <h4 class="card-title px-4 pt-3"><?= $common_info ?></h4>
                 <div class="card-content px-5 pb-4">
                     <ul>
-                        <li><a href="http://dmweblab.com/portal/manual.php?prod=1&page=6" target="_blank"><?= $common_see_guide ?></a></li>
+                        <li><a href="../portal/manual.php?prod=2&page=6" target="_blank"><?= $common_see_guide ?></a></li>
                     </ul>
                 </div>
             </div>
