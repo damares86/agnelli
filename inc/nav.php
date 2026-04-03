@@ -4,17 +4,23 @@
     <!-- Footer Content -->
     <div class="footer-nav position-relative">
       <ul class="h-100 d-flex align-items-center justify-content-between ps-0">
-        <li class="active">
-          <a href="home.html">
+        <?php
+          $active = $page_name == 'index' ? 'class="active"' : '' ;
+        ?>
+        <li <?= $active ?>>
+          <a href="index.php">
             <i class="ti ti-home"></i>
-            <span>Home</span>
+            <span <?= $active ?>>Home</span>
           </a>
         </li>
 
-        <li>
+        <?php
+          $active = $page_name == 'rubrica' ? 'class="active"' : '' ;
+        ?>
+        <li <?= $active ?>>
           <a href="rubrica.php">
             <i class="ti ti-address-book"></i>
-            <span>Rubrica</span>
+            <span <?= $active ?>>Rubrica</span>
           </a>
         </li>
 

@@ -1,6 +1,9 @@
 <?php
 require 'inc/header.php';
 require 'inc/sidebar.php';
+
+$page_name = 'index';
+
 ?>
 
 <div class="page-content-wrapper">
