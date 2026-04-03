@@ -10,7 +10,7 @@ require 'inc/sidebar.php';
 
     <div class="pt-3"></div>
 
-    <div class="container">
+    <div id="home" class="container">
       <a href="rubrica.php">
         <div class="card service-card bg-danger bg-gradient mb-3">
           <div class="card-body">
@@ -20,13 +20,16 @@ require 'inc/sidebar.php';
                 <!--<p class="mb-0">The write less, do more with JavaScript Library.</p>-->
               </div>
               <div class="service-img">
-                <img src="assets/img/rubrica.png" alt="">
+                <i class="ti ti-address-book text-white"></i>
               </div>
             </div>
           </div>
         </div>
       </a>
 
+      <?php
+        if($_SESSION['role_id']<4){
+      ?>
       <a href="portal/manual.php?prod=1">
         <div class="card service-card bg-info bg-gradient mb-3">
           <div class="card-body">
@@ -35,12 +38,15 @@ require 'inc/sidebar.php';
                 <h5>Guida</h5>
               </div>
               <div class="service-img">
-                <img src="assets/img/white-question-mark.svg" alt="">
+                <i class="ti ti-info-square-rounded text-white"></i>
               </div>
             </div>
           </div>
         </div>
       </a>
+      <?php
+      }
+      ?>
 
       <div class="pb-3"></div>
     </div>
