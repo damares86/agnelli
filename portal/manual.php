@@ -50,9 +50,9 @@ if($_SESSION['internal']){
       include "inc/sidebar.php";
       ?>
 
-      <div id="main">
+      <div id="main" class="luna">
 
-        <div class="content-wrapper container">
+        <div class="content-wrapper container luna">
 
           <div class="page-heading">
 

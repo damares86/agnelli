@@ -13,3 +13,19 @@
 .card-content.home{
     font-size:1.5em;
 }
+
+.container.luna{
+    width:100% !important;
+}
+
+@media (max-width: 991px){
+    #main.luna{
+        padding: 2rem 0 ;
+    }
+
+    .container.luna{
+        max-width: 95% !important;
+        margin: 0 auto;
+        padding: 0.5rem;
+    }
+}

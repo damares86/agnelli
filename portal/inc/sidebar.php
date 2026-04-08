@@ -5,7 +5,10 @@
   <div class="sidebar_luna sidebar-wrapper_luna shadow">
     <div class="sidebar-logo">
       <a href="index.php">
-        <img src="assets/img/logo/luna_logo.png" alt="Logo" srcset="" />
+        <img src="../assets/img/logo_agnelli_scritta.png" alt="Logo" srcset="" />
+      </a>
+      <a href="../" class="btn icon btn-primary shadow mx-3 px-3 text-white">
+        <i class="bi bi-arrow-left-circle"></i> &nbsp; Torna all'app
       </a>
     </div>
     <?php
@@ -68,12 +71,12 @@
             }
           }
         }
-        if($check_parent == 1){
-          if ($page_id == $parent_row['id'] ) {
+        if ($check_parent == 1) {
+          if ($page_id == $parent_row['id']) {
             $active = "active";
           }
         }
-        
+
       ?>
         <li class="d-flex align-items-center <?= $active ?>" data-parent-id="<?= $parent_row['id'] ?>">
 

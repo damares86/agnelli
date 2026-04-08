@@ -1,13 +1,22 @@
 $(document).ready(function () {
 
     // 🔸 carica categorie
-    $.getJSON('ajax/get_categories.php', function (data) {
-        data.forEach(cat => {
-            $('#categoryFilter').append(
-                `<option value="${cat.id}">${cat.name}</option>`
-            );
-        });
+$.getJSON('ajax/get_categories.php', function (res) {
+
+    // se il PHP restituisce direttamente array
+    let data = Array.isArray(res) ? res : res.data;
+
+    if (!data) {
+        console.error("Formato categorie non valido", res);
+        return;
+    }
+
+    data.forEach(cat => {
+        $('#categoryFilter').append(
+            `<option value="${cat.id}">${cat.name}</option>`
+        );
     });
+});
 
     // 🔸 render CARD mobile
 function renderCards(data) {
