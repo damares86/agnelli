@@ -2210,7 +2210,7 @@ $all_files_size = 0;
                             <a title="<?php echo lng('Rename') ?>" href="#" onclick="rename('<?php echo fm_enc(addslashes(FM_PATH)) ?>', '<?php echo fm_enc(addslashes($f)) ?>');return false;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                             <a title="<?php echo lng('CopyTo') ?>..." href="?p=&amp;copy=<?php echo urlencode(trim(FM_PATH . '/' . $f, '/')) ?>"><i class="fa fa-files-o" aria-hidden="true"></i></a>
                         <?php endif; ?>
-                        <a title="<?php echo lng('DirectLink') ?>" href="<?php echo '../../uploads/img/' . $f . '/' ?>" target="_blank"><i class="fa fa-link" aria-hidden="true"></i></a>
+                        <a title="<?php echo lng('DirectLink') ?>" href="<?php echo '../../uploads/' . $f . '/' ?>" target="_blank"><i class="fa fa-link" aria-hidden="true"></i></a>
                         <!-- <a title="<?php echo lng('DirectLink') ?>" href="<?php echo fm_enc(FM_ROOT_URL . (FM_PATH != '' ? '/' . FM_PATH : '') . '/' . $f . '/') ?>" target="_blank"><i class="fa fa-link" aria-hidden="true"></i></a> -->
                     </td>
                 </tr>
@@ -2282,7 +2282,7 @@ $all_files_size = 0;
                             <!-- <a title="<?php echo lng('CopyTo') ?>..."
                                 href="?p=<?php echo urlencode(FM_PATH) ?>&amp;copy=<?php echo urlencode(trim(FM_PATH . '/' . $f, '/')) ?>"><i class="fa fa-files-o"></i></a> -->
                         <?php endif; ?>
-                                                <a title="<?php echo lng('DirectLink') ?>" href="<?php echo '../../uploads/img/' . $f ?>" target="_blank"><i class="fa fa-link" aria-hidden="true"></i></a>
+                                                <a title="<?php echo lng('DirectLink') ?>" href="<?php echo '../../uploads/' . $f ?>" target="_blank"><i class="fa fa-link" aria-hidden="true"></i></a>
                         <!-- <a title="<?php echo lng('DirectLink') ?>" href="<?php echo fm_enc(FM_ROOT_URL . (FM_PATH != '' ? '/' . FM_PATH : '') . '/' . $f) ?>" target="_blank"><i class="fa fa-link"></i></a> -->
                         <a title="<?php echo lng('Download') ?>" href="?p=<?php echo urlencode(FM_PATH) ?>&amp;dl=<?php echo urlencode($f) ?>" onclick="confirmDailog(event, 1211, '<?php echo lng('Download'); ?>','<?php echo urlencode($f); ?>', this.href);"><i class="fa fa-download"></i></a>
                     </td>

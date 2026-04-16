@@ -14,8 +14,17 @@
     font-size:1.5em;
 }
 
+.page-content img{
+    max-width: 100% !important;
+    height:auto;
+}
+
 .container.luna{
     width:100% !important;
+}
+
+.nochild{
+    margin: 1em 0;
 }
 
 @media (max-width: 991px){

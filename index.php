@@ -67,8 +67,6 @@ $page_name = 'index';
       }
       ?>
 
-
-
       <div class="pb-3"></div>
     </div>
 
