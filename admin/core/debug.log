@@ -1,0 +1,9 @@
+Array
+(
+    [title] => Evento test
+    [start] => 2026-05-14T12:00
+    [end] => 2026-05-14T13:00
+    [note] => Vediamo se funziona
+    [url] => 
+    [calendar_color] => 2
+)

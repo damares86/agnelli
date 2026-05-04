@@ -69,7 +69,7 @@ class Common
     function insert($fields)
     {
         $i = 1;
-        
+
         $this->fields = "";
         foreach ($fields as $item) {
             $this->fields .= "$item = :$item";
@@ -78,18 +78,18 @@ class Common
             }
             $i++;
         }
-        
+
         $query = "INSERT INTO " . $this->prx . $this->table . "
         SET " . $this->fields . "";
 
         $stmt = $this->conn->prepare($query);
-        // echo $query . '<br>';
+        echo $query . '<br>';
 
         foreach ($fields as $item) {
             $stmt->bindParam(":$item", $this->$item);
             // echo $item . ' -> ' . $this->$item . '<br>';
         }
-        
+
         if ($stmt->execute()) {
             return true;
         } else {
@@ -220,7 +220,42 @@ class Common
         if ($offset !== null) {
             $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
         }
-        
+
+        $stmt->execute();
+        return $stmt;
+    }
+
+
+    // $where must be an array
+    function showAllWhereBetween($orderBy, $field, $start, $end, $limit = null, $offset = null, $ascDesc = "ASC")
+    {
+        $limit_query = '';
+        $offset_query = '';
+
+        if ($limit !== null) {
+            $limit_query = " LIMIT :limit ";
+        }
+        if ($offset !== null) {
+            $offset_query = " OFFSET :offset";
+        }
+
+        $query = "SELECT *
+        FROM " . $this->prx . $this->table . "
+        WHERE $field BETWEEN :start AND :end
+        ORDER BY " . $orderBy . " " . $ascDesc . " " . $limit_query . $offset_query;
+
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bindParam(':start', $start);
+        $stmt->bindParam(':end', $end);
+
+        if ($limit !== null) {
+            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+        }
+        if ($offset !== null) {
+            $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+        }
+
         $stmt->execute();
         return $stmt;
     }
@@ -269,7 +304,7 @@ class Common
 
         // execute the query
         $stmt->execute();
-        
+
         // get number of rows
         $num = $stmt->rowCount();
 
@@ -322,7 +357,7 @@ class Common
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":$field", $this->$field);
-        
+
         if ($stmt->execute()) {
             return true;
         } else {
@@ -469,31 +504,31 @@ class Common
     {
         return str_replace('.', ',', $number);
     }
-    public function getBaseUrlBefore($stopDir = 'admin') {
-    // Determina il protocollo (http o https)
-    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' 
-                || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+    public function getBaseUrlBefore($stopDir = 'admin')
+    {
+        // Determina il protocollo (http o https)
+        $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off'
+            || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
 
-    // Host, es: boots.local
-    $host = $_SERVER['HTTP_HOST'];
+        // Host, es: boots.local
+        $host = $_SERVER['HTTP_HOST'];
 
-    // URI della richiesta, es: /damares/admin/core/tinyfilemanager.php?lang=en
-    $uri = $_SERVER['REQUEST_URI'];
+        // URI della richiesta, es: /damares/admin/core/tinyfilemanager.php?lang=en
+        $uri = $_SERVER['REQUEST_URI'];
 
-    // Rimuove la query string (tutto dopo il ?)
-    $uri = parse_url($uri, PHP_URL_PATH);
+        // Rimuove la query string (tutto dopo il ?)
+        $uri = parse_url($uri, PHP_URL_PATH);
 
-    // Divide il path in segmenti
-    $segments = explode('/', trim($uri, '/'));
+        // Divide il path in segmenti
+        $segments = explode('/', trim($uri, '/'));
 
-    // Ricostruisce il path fino alla directory specificata (esclusa)
-    $basePath = '';
-    foreach ($segments as $segment) {
-        if ($segment === $stopDir) break;
-        $basePath .= $segment . '/';
+        // Ricostruisce il path fino alla directory specificata (esclusa)
+        $basePath = '';
+        foreach ($segments as $segment) {
+            if ($segment === $stopDir) break;
+            $basePath .= $segment . '/';
+        }
+
+        return $protocol . $host . '/' . $basePath;
     }
-
-    return $protocol . $host . '/' . $basePath;
-}
-
 }

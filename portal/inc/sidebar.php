@@ -4,10 +4,10 @@
 <div id="side_luna" class="">
   <div class="sidebar_luna sidebar-wrapper_luna shadow">
     <div class="sidebar-logo">
-     <!-- <a href="index.php">-->
-        <img src="../assets/img/logo_agnelli_scritta.png" alt="Logo" srcset="" />
+      <!-- <a href="index.php">-->
+      <img src="../assets/img/logo_agnelli_scritta.png" alt="Logo" srcset="" />
       <!--</a>-->
-      <a href="../" class="btn icon btn-primary shadow mx-3 px-3 text-white">
+      <a href="../" class="btn icon btn-primary shadow m-3 px-3 text-white">
         <i class="bi bi-arrow-left-circle"></i> &nbsp; Torna all'app
       </a>
     </div>
@@ -69,6 +69,8 @@
             if (is_array($child['id'])) {
               $hasSub = true;
               // $link = $link.'#';
+            } else {
+              $nochild = "nochild";
             }
           }
         }
@@ -76,12 +78,10 @@
           if ($page_id == $parent_row['id']) {
             $active = "active";
           }
-        }else{
-          $nochild = "nochild";
         }
 
       ?>
-        <li class="d-flex align-items-center <?= $nochild?> <?= $active ?>" data-parent-id="<?= $parent_row['id'] ?>">
+        <li class="d-flex align-items-center <?= $nochild ?> <?= $active ?>" data-parent-id="<?= $parent_row['id'] ?>">
 
           <a href="manual.php<?= $link ?>"><?= $title ?></a>
           <?php
