@@ -47,13 +47,13 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     if($row['cat_id']==1){
         $to = ['economo@agnelli.it'];
     }else{
-        $to = ['economo@agnelli.it', 'davidemasera@gmail.com'];
+        $to = ['economo@agnelli.it', 'amministrazione@istitutoagnelli.it'];
     }
     //$to=['economo@agnelli.it','amministrazione@istitutoagnelli.it'];
 
     $end_date = date("d-m-Y", strtotime($row['end'])) ;
 
-    $subject = 'GESTIONE AGNELLI: Scadenza: ' . $row['title'] . ' - ' . $end_date ;
+    $subject = 'AGNELLI MANAGER: Scadenza: ' . $row['title'] . ' - ' . $end_date ;
     // To send HTML mail, the Content-type header must be set
     $headers  = 'MIME-Version: 1.0' . "\r\n";
     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";

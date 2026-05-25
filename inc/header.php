@@ -126,11 +126,12 @@ foreach (glob("admin/locale/$lang/*.php") as $row) {
   <!-- Style CSS -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="assets/css/custom.css">
+  <link rel="stylesheet" href="admin/assets/css/calendar.css">
 
   <!-- Web App Manifest -->
   <link rel="manifest" href="manifest.json">
   <!-- Bootstrap 5.3 -->
-  <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">-_>
+  <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">-->
 
   <!-- DataTables -->
   <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">

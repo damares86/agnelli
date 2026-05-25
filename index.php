@@ -63,8 +63,24 @@ $page_name = 'index';
             </div>
           </div>
         </a>
+
+        <a href="https://istitutoagnelli.altervista.org/admin/index.php?p=calendar&tablePage=1&pageName=calendar">
+          <div class="card service-card bg-warning mb-3">
+            <div class="card-body">
+              <div class="d-flex gap-3 align-items-center justify-content-between">
+                <div class="service-text">
+                  <h5>Calendario scadenze</h5>
+                </div>
+                <div class="service-img">
+                  <i class="ti ti-calendar text-white"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
       <?php
       }
+
       ?>
 
       <div class="pb-3"></div>
