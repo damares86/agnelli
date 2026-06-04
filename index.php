@@ -64,7 +64,7 @@ $page_name = 'index';
           </div>
         </a>
 
-        <a href="https://istitutoagnelli.altervista.org/admin/index.php?p=calendar&tablePage=1&pageName=calendar">
+        <a href="calendar.php">
           <div class="card service-card bg-warning mb-3">
             <div class="card-body">
               <div class="d-flex gap-3 align-items-center justify-content-between">
