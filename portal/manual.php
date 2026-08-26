@@ -193,7 +193,7 @@ if($_SESSION['internal']){
                         extract($par_row2);
 
                         ?>
-                        <h6 class='d-inline mt-5' id="par_<?=$par_row1['id']?>"><?= $par_row1['title'] ?></h6>
+                        <h4 class='d-inline mt-5' id="par_<?=$par_row1['id']?>"><?= $par_row1['title'] ?></h4>
                         <?php
                         if($manager){
                         ?>
@@ -205,7 +205,7 @@ if($_SESSION['internal']){
                         ?>
                         <span class="edited">(<?= $luna_manual_editor ?> <b><?= $par_row2['username'] ?></b> <?= $luna_manual_on ?> <?= $editDate ?>)</span>
                         <p><?= $par_row1['content'] ?></p>
-                        
+                        <span class="border-bottom">&nbsp;</span>
 
                     <?php
                       }

@@ -88,6 +88,7 @@ $layout = $row['value'];
 
               <?php
               }
+              require "inc/func/calendar.php" ;
               ?>
             </section>
 

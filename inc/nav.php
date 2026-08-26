@@ -5,7 +5,7 @@
     <div class="footer-nav position-relative">
       <ul class="h-100 d-flex align-items-center justify-content-between ps-0">
         <?php
-          $active = $page_name == 'index' ? 'class="active"' : '' ;
+        $active = $page_name == 'index' ? 'class="active"' : '';
         ?>
         <li <?= $active ?>>
           <a href="index.php">
@@ -15,7 +15,7 @@
         </li>
 
         <?php
-          $active = $page_name == 'rubrica' ? 'class="active"' : '' ;
+        $active = $page_name == 'rubrica' ? 'class="active"' : '';
         ?>
         <li <?= $active ?>>
           <a href="rubrica.php">
@@ -33,6 +33,12 @@
         <?php
         if ($_SESSION['role_id'] < 4) {
         ?>
+          <li>
+            <a href="portal/manual.php?prod=1">
+              <i class="ti ti-info-square-rounded"></i>
+              <span>Guida</span>
+            </a>
+          </li>
           <li>
             <a href="admin">
               <i class="ti ti-settings"></i>

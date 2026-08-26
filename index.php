@@ -78,6 +78,21 @@ $page_name = 'index';
             </div>
           </div>
         </a>
+
+        <a href="admin/index.php?p=importTimbrature">
+          <div class="card service-card bg-success mb-3">
+            <div class="card-body">
+              <div class="d-flex gap-3 align-items-center justify-content-between">
+                <div class="service-text">
+                  <h5>Timbrature</h5>
+                </div>
+                <div class="service-img">
+                  <i class="ti ti-id-badge text-white"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
       <?php
       }
 

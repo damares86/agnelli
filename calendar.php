@@ -49,7 +49,7 @@ $page_name = 'index';
 
     <div class="pt-3"></div>
 
-    <div id="calendar" class="container">
+    <div class="container">
 
       <script src='admin/script/index.global.js'></script>
       <script src='admin/script/locales-all.global.js'></script>

@@ -2,7 +2,7 @@
 
 ?>
 <a href="index.php?p=allLunaPages&prod=1&tablePage=1&pageName=allLunaPages">
-    <div class="card-header text-center">
+    <div class="card-header">
         <h4>Guida Gestione Agnelli</h4>
     </div>
 

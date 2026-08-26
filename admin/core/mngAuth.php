@@ -41,14 +41,15 @@ if($email_exists && password_verify($postpass,$auth->password)){
         setcookie("damares-login", $auth->id . "," . $token, time()+(60 * 60 *24 * 365 *10 ),"/");
     }
     
-    session_start();
+
+	session_start();
     $accountroles->account_id = $auth->id; 
+
     
     
     $role_id = $accountroles->showAccountRolesId();
     $role->id = $role_id ;
-    
-    
+
     // set session data
     $_SESSION['loggedin'] = true ;
     $_SESSION['account_id'] = $auth->id;

@@ -1,9 +1,9 @@
 Array
 (
-    [title] => Evento test
-    [start] => 2026-05-14T12:00
-    [end] => 2026-05-14T13:00
-    [note] => Vediamo se funziona
+    [title] => Comunicare il 20/07/2026 a mastercom il numero definitivo di badge as 26-27
+    [start] => 2026-07-20T12:00
+    [end] => 2026-07-20T13:00
+    [note] => 
     [url] => 
-    [calendar_color] => 2
+    [calendar_color] => 3
 )

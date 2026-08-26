@@ -161,14 +161,19 @@ foreach (glob("admin/locale/$lang/*.php") as $row) {
             <img class="logo-dark" src="assets/img/logo_agnelli_scritta.png" alt="">
           </a>
         </div>
-
-        <!-- Navbar Toggler -->
-        <div class="navbar-toggler" id="affanNavbarToggler" data-bs-toggle="offcanvas" data-bs-target="#affanOffcanvas"
-          aria-controls="affanOffcanvas">
-          <span class="d-block"></span>
-          <span class="d-block"></span>
-          <span class="d-block"></span>
-        </div>
+        <?php
+        if ($_SESSION['role_id'] < 4) {
+        ?>
+          <!-- Navbar Toggler -->
+          <div class="navbar-toggler" id="affanNavbarToggler" data-bs-toggle="offcanvas" data-bs-target="#affanOffcanvas"
+            aria-controls="affanOffcanvas">
+            <span class="d-block"></span>
+            <span class="d-block"></span>
+            <span class="d-block"></span>
+          </div>
+        <?php
+        }
+        ?>
       </div>
     </div>
   </div>
