@@ -64,7 +64,7 @@ $page_name = 'index';
           </div>
         </a>
 
-        <a href="calendar.php">
+        <a href="admin/index.php?p=calendar">
           <div class="card service-card bg-warning mb-3">
             <div class="card-body">
               <div class="d-flex gap-3 align-items-center justify-content-between">
