@@ -67,7 +67,7 @@ foreach ($employees as $emp) {
     $sheet->mergeCells('A2:J2');
     $sheet->getStyle('A2')->getFont()->setBold(true);
 
-    $headers = ['Data', 'Giorno', 'Entrata 1', 'Uscita 1', 'Entrata 2', 'Uscita 2', 'Entrata 3', 'Uscita 3', 'Ore lavorate', 'Ore contratto',  'Note'];
+    $headers = ['Data', 'Giorno', 'Entrata 1', 'Uscita 1', 'Entrata 2', 'Uscita 2', 'Entrata 3', 'Uscita 3', 'Ore lavorate', 'Ore contratto', 'Differenza', 'Note'];
     $col = 1;
     foreach ($headers as $h) {
         $sheet->setCellValueByColumnAndRow($col, 4, $h);
@@ -110,6 +110,7 @@ foreach ($employees as $emp) {
 
         $sheet->setCellValue("I$r", $workedHours / 24);
         $sheet->setCellValue("J$r", $contractHours / 24);
+        $sheet->setCellValue("K$r", "=I$r-J$r");
 
         $note = [];
         if ($day['odd']) $note[] = 'Timbratura dispari (manca uscita)';

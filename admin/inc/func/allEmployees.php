@@ -43,7 +43,7 @@ $list = $employee->allEmployees();
                 <th class="text-center">Mer</th>
                 <th class="text-center">Gio</th>
                 <th class="text-center">Ven</th>
-                <!-- <th class="text-center">Tot. sett.</th> -->
+                <th class="text-center">Tot. sett.</th>
                 <th class="text-center">Stato</th>
                 <th><?= $common_actions ?></th>
               </tr>
@@ -59,7 +59,7 @@ $list = $employee->allEmployees();
                         name="h[<?= $row['id'] ?>][<?= $k ?>]" value="<?= rtrim(rtrim(number_format((float)$row[$f], 2, '.', ''), '0'), '.') ?: 0 ?>">
                     </td>
                   <?php } ?>
-                  <!-- <td class="text-center fw-bold"><?= rtrim(rtrim(number_format(Employee::weekTotal($row), 2, ',', ''), '0'), ',') ?></td> -->
+                  <td class="text-center fw-bold"><?= rtrim(rtrim(number_format(Employee::weekTotal($row), 2, ',', ''), '0'), ',') ?></td>
                   <td class="text-center">
                     <?php if ($row['active']) { ?>
                       <span class="badge bg-success">Attivo</span>

@@ -51,7 +51,8 @@ $mesi = [1 => 'Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Lug
               <label>File timbrature (.xls, .xlsx o .csv)</label>
               <input type="file" class="form-control" name="file" accept=".xls,.xlsx,.csv" required>
               <small class="text-muted d-block mt-2">
-                Formato atteso: export "Access Control Log" con le colonne <code>Name</code>, <code>User ID</code>, <code>Date</code>, <code>Time</code>.
+                Formati accettati: <code>Nome</code>, <code>ID Utente</code>, <code>Data/Ora</code> (data e ora nella stessa cella),
+                oppure il precedente export con <code>Name</code>, <code>User ID</code>, <code>Date</code>, <code>Time</code>.
                 I nominativi non presenti in anagrafica vengono creati con 8 ore al giorno.
                 Il reimport dello stesso file non crea duplicati.
               </small>
